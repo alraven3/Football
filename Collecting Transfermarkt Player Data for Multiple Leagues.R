@@ -1,8 +1,15 @@
-#loading Jason Zivkovic's superb worldfootballR package which this really easy!
+#This is a script to scrape and prepare Transfermarkt player data/info for all teams in the (17) leagues for which 
+#I've scraped FBref player data for the ongoing/specific season (in Python, based on Ben Griffis' code, see his own github repo!)
+
+#The players' positions aren't reliable or precise in FBref,so the main goal is completing that FBref dataset with Transfermarkt's more reliable/precise "main position" data
+#this can be done by extracting tm_squad_stats (=basic data/info about a squad's players) for all the teams of the selected leagues
+
+
+#Loading Jason Zivkovic's superb worldfootballR package which this really easy!
 #Zivkovic J (2022). worldfootballR: Functions to Extract and Clean World Football (Soccer) Data. R package version 0.5.2.3000, https://github.com/JaseZiv/worldfootballR. 
 library(worldfootballR)
 
-#extracting player data (name, transfermarkt url, age, nationality, position, squad and match appearances, minutes played, goals) for each league
+#Extracting player data (name, transfermarkt url, age, nationality, position, squad and match appearances, minutes played, goals) for each league
 
 eng1_team_urls <- tm_league_team_urls(country_name = "England", start_year = 2023)
 eng1_teams <- tm_squad_stats(team_url = eng1_team_urls)
@@ -56,12 +63,12 @@ ger2_teams <- tm_squad_stats(team_url = ger2_team_urls)
 ita2_team_urls <- tm_league_team_urls(country_name = "", league_url = "https://www.transfermarkt.com/serie-b/startseite/wettbewerb/IT2",start_year = 2023)
 ita2_teams <- tm_squad_stats(team_url = ita2_team_urls)
 
-#merging it all into a single dataframe
+#Merging it all into a single dataframe
 
 all_leagues_list <- list(eng1_teams,eng2_teams,fra1_teams,fra2_teams,ita1_teams,ita2_teams,spa1_teams,spa2_teams,ger1_teams,ger2_teams,
                         por1_teams,bel1_teams,ned1_teams,usa1_teams,arg1_teams,mex1_teams,bra1_teams)
 all_leagues_data <- Reduce(function(x,y) merge(x, y, all=TRUE), all_leagues_list)
 
-#export as csv
+#Export as csv
 
 write.csv(all_leagues_data,file = "C:\\Users\\alrav\\Documents\\Football\\all_leagues_tsfmkt_data.csv")
