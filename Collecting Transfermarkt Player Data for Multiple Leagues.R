@@ -2,7 +2,7 @@
 #Zivkovic J (2022). worldfootballR: Functions to Extract and Clean World Football (Soccer) Data. R package version 0.5.2.3000, https://github.com/JaseZiv/worldfootballR. 
 library(worldfootballR)
 
-#extracting player data (name, transfermarkt url, age, nationality, squad and match appearances, minutes played, goals) for each league
+#extracting player data (name, transfermarkt url, age, nationality, position, squad and match appearances, minutes played, goals) for each league
 
 eng1_team_urls <- tm_league_team_urls(country_name = "England", start_year = 2023)
 eng1_teams <- tm_squad_stats(team_url = eng1_team_urls)
