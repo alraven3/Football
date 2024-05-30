@@ -5,7 +5,7 @@
 #this can be done by extracting tm_squad_stats (=basic data/info about a squad's players) for all the teams of the selected leagues
 
 
-#Loading Jason Zivkovic's superb worldfootballR package which this really easy!
+#Loading Jason Zivkovic's superb worldfootballR package which makes this really easy!
 #Zivkovic J (2022). worldfootballR: Functions to Extract and Clean World Football (Soccer) Data. R package version 0.5.2.3000, https://github.com/JaseZiv/worldfootballR. 
 library(worldfootballR)
 
